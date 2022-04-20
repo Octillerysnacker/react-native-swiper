@@ -8,12 +8,15 @@ import {
   Text,
   View,
   ViewPropTypes,
-  ScrollView,
   Dimensions,
-  TouchableOpacity,
   Platform,
   ActivityIndicator
 } from 'react-native'
+
+import {
+  ScrollView,
+  TouchableOpacity
+} from 'react-native-gesture-handler'
 
 /**
  * Default styles
@@ -321,10 +324,10 @@ export default class extends Component {
     // related to https://github.com/leecade/react-native-swiper/issues/570
     // contentOffset is not working in react 0.48.x so we need to use scrollTo
     // to emulate offset.
-    if(this.state.total > 1) {
+    if (this.state.total > 1) {
       this.scrollView.scrollTo({ ...offset, animated: false })
     }
-	
+
     if (this.initialRender) {
       this.initialRender = false
     }
@@ -350,15 +353,15 @@ export default class extends Component {
           } else if (this.state.index === this.state.total - 1) {
             this.props.horizontal === false
               ? this.scrollView.scrollTo({
-                  x: 0,
-                  y: this.state.height * this.state.total,
-                  animated: false
-                })
+                x: 0,
+                y: this.state.height * this.state.total,
+                animated: false
+              })
               : this.scrollView.scrollTo({
-                  x: this.state.width * this.state.total,
-                  y: 0,
-                  animated: false
-                })
+                x: this.state.width * this.state.total,
+                y: 0,
+                animated: false
+              })
           }
         }
       },
